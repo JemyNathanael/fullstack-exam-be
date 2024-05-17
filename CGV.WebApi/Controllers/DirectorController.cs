@@ -17,11 +17,13 @@ namespace CGV.WebApi.Controllers
             _mediator = mediator;
         }
         // GET: api/<DirectorController>
-        /*[HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet]
+        public async Task<ActionResult<GetAllDirectorsResponse>> Get(CancellationToken cancellationToken)
         {
-            return new string[] { "value1", "value2" };
-        }*/
+            var request = new GetAllDirectorsRequest();
+            var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
+        }
 
         // GET api/<DirectorController>/5
         /*[HttpGet("{id}")]

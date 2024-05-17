@@ -49,7 +49,7 @@ public partial class Movie
     public string TrailerUrl { get; set; } = null!;
 
     [Column("is_showing", TypeName = "bit(1)")]
-    public BitArray IsShowing { get; set; } = null!;
+    public bool IsShowing { get; set; }
 
     [Column("created_at", TypeName = "timestamp without time zone")]
     public DateTime CreatedAt { get; set; }

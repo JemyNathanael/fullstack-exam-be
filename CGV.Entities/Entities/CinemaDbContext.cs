@@ -230,6 +230,10 @@ public partial class CinemaDbContext : DbContext
             entity.Property(e => e.CreatedBy).HasDefaultValueSql("'SYSTEM'::character varying");
             entity.Property(e => e.UpdatedAt).HasDefaultValueSql("now()");
             entity.Property(e => e.UpdatedBy).HasDefaultValueSql("'SYSTEM'::character varying");
+            entity.Property(e => e.IsShowing).IsRequired()
+                .HasColumnType("bit(1)")
+                .HasColumnName("is_showing")
+                .HasConversion(ConverterProvider.BoolToBitArray());
 
             entity.HasOne(d => d.Director).WithMany(p => p.Movies)
                 .OnDelete(DeleteBehavior.ClientSetNull)

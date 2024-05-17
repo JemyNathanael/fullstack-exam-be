@@ -1,5 +1,6 @@
 using CGV.Entities;
-using CGV.Services.Handlers;
+using CGV.Services.Handlers.Director;
+using CGV.Services.Handlers.DirectorHandler;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("nextApp", policyBuilder =>
+    {
+        policyBuilder.WithOrigins("http://localhost:3000");
+        policyBuilder.AllowAnyHeader();
+        policyBuilder.AllowAnyMethod();
+        policyBuilder.AllowCredentials();
+    });
+});
 
 builder.Services.AddDbContextPool<CinemaDbContext>(dbBuilder =>
 {

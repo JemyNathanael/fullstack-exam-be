@@ -2,13 +2,7 @@
 using CGV.Contracts.Director.Responses;
 using CGV.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CGV.Services.Handlers
+namespace CGV.Services.Handlers.DirectorHandler
 {
     public class AddDirectorHandler : IRequestHandler<AddDirectorRequest, AddDirectorResponse>
     {
@@ -19,7 +13,7 @@ namespace CGV.Services.Handlers
         }
         public async Task<AddDirectorResponse> Handle(AddDirectorRequest request, CancellationToken cancellationToken)
         {
-            var director = new Director
+            var director = new Entities.Director
             {
                 Id = Guid.NewGuid(),
                 Name = request.DirectorName,
