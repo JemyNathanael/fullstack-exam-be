@@ -1,6 +1,6 @@
 ﻿namespace CGV.Contracts.Director.Responses
 {
-    public class GetAllDirectorsResponse
+    public class GetAllDirectorResponse
     {
         public List<DirectorData> DirectorDatas { get; set; } = new List<DirectorData>();
     }

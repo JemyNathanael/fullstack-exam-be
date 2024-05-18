@@ -18,7 +18,7 @@ namespace CGV.WebApi.Controllers
         }
         // GET: api/<DirectorController>
         [HttpGet]
-        public async Task<ActionResult<GetAllDirectorsResponse>> Get(CancellationToken cancellationToken)
+        public async Task<ActionResult<GetAllDirectorResponse>> Get(CancellationToken cancellationToken)
         {
             var request = new GetAllDirectorsRequest();
             var response = await _mediator.Send(request, cancellationToken);

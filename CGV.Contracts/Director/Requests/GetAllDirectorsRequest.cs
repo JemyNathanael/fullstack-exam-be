@@ -2,7 +2,7 @@
 using MediatR;
 namespace CGV.Contracts.Director.Requests
 {
-    public class GetAllDirectorsRequest : IRequest<GetAllDirectorsResponse>
+    public class GetAllDirectorsRequest : IRequest<GetAllDirectorResponse>
     {
 
     }
