@@ -44,4 +44,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors("nextApp");
+
 app.Run();

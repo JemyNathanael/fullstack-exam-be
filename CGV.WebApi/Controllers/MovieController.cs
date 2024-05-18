@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CGV.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/movie")]
     [ApiController]
     public class MovieController : ControllerBase
     {
@@ -17,11 +17,21 @@ namespace CGV.WebApi.Controllers
             _mediator = mediator;
         }
         // GET: api/<MovieController>
-        /*[HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("upcoming")]
+        public async Task<ActionResult<GetUpcomingMoviesResponse>> GetUpcomingMovies(CancellationToken cancellationToken)
         {
-            return new string[] { "value1", "value2" };
-        }*/
+            var request = new GetUpcomingMoviesRequest();
+            var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
+        }
+
+        [HttpGet("showing")]
+        public async Task<ActionResult<GetIsShowingMoviiesResponse>> GetIsShowingMovies(CancellationToken cancellationToken)
+        {
+            var request = new GetIsShowingMoviesRequest();
+            var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
+        }
 
         // GET api/<MovieController>/5
         /*[HttpGet("{id}")]
